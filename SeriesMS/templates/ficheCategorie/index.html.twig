@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MS Fiche Catégories{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1 class="text-center">Fiche Catégorie</h1>
+</div>
+
+{# CORPS DE LA PAGE #}
+<div class="container">
+
+    {# Section LISTE DES SERIES #}
+    <div class="section border border-dark m-1 p-3">
+
+        <div class="row">
+
+            <div class="col-12">
+                - Liste des catégories :
+            </div>
+
+            <div class="col-12">
+
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col"><a href="{{ path('ficheCategorie') }}">Nom</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td class="text-uppercase font-weight-bold text-danger">X</td>
+                    </tr>
+                </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                - Formulaire d'ajout de modification catégorie :
+            </div>
+            <div class="col-12">
+                <span class="text-uppercase font-weight-bold text-danger">form</span>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+

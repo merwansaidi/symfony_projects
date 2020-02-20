@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MS Series {% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1 class="text-center">Bienvenue !</h1>
+</div>
+
+{# CORPS DE LA PAGE #}
+<div class="container">
+
+    {# Section SERIES #}
+    <div class="section border border-dark m-1 p-3">
+
+        <div class="row">
+            <div class="col">
+                <u><h2 class="text-uppercase">Series</h2></u>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                - Nombre de séries : <span class="text-uppercase font-weight-bold text-danger">X</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                - Lien vers la page Series : <a class="text-uppercase font-weight-bold text-danger" href="{{ path('serie') }}">page-serie</a>
+            </div>
+        </div>
+
+    </div>
+
+    {# Section CATEGORIES #}
+    <div class="section border border-dark m-1 p-3">
+
+        <div class="row">
+            <div class="col">
+                <u><h2 class="text-uppercase">Categories</h2></u>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                - Nombre de catégories : <span class="text-uppercase font-weight-bold text-danger">X</span>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12">
+                - Liste des catégories :
+            </div>
+
+            <div class="col-12">
+
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Lien Fiche Catégorie</th>
+                    <th scope="col">Nombre de films</th>
+                    </tr>
+                </thead>
+                <tbody>
+{% for categorie in categories %}
+                    <tr>
+                    <td class="text-uppercase font-weight-bold text-danger"><a href="{{ path('ficheCategorie') }}">{{ categorie.nomCategorie }}</a></td>
+                    <td class="text-uppercase font-weight-bold text-danger">X</td>
+                    <td class="text-uppercase font-weight-bold text-danger">X</td>
+                    </tr>
+{% endfor %}
+                </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                - Formulaire de création de catégorie :
+            </div>
+            <div class="col-12">
+                {{ form(formCategorie) }}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
