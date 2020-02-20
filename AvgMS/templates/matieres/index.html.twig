@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MatieresController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1> Matières ✅</h1>
+
+
+
+
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Coeff</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+  {% if matieres is not empty %}
+  {% for matiere in matieres %}    
+      <tr>
+        <th scope="row">{{ matiere.nom }}</th>
+        <td>{{ matiere.coefficient }}</td>
+        {# <td><button class="btn-light" value="Voir la matière" href={{ path('ficheMatiere')}}</td> #}
+      </tr>
+  {% endfor %}
+  {% endif %}
+    </tbody>
+  </table>
+
+  {# <span>Moyenne : </span>{{ avg }} #}
+</div>
+
+<div>
+  <h2>Ajouter une matière</h2>
+  {{ form(formMatiere) }}
+</div>
+
+</div>
+
+{% endblock %}

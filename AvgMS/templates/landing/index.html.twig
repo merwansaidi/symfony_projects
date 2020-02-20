@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Landing Page Note{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1> Notes ✅</h1>
+
+
+
+
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Matière</th>
+        <th scope="col">Note</th>
+        <th scope="col">Coeff</th>
+        <th scope="col">Ajouté le</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% if notes is not empty %}
+  {% for note in notes %}    
+      <tr>
+        <th scope="row">{{ note.matiere.nom }}</th>
+        <td>{{ note.valeur }}</td>
+        <td>{{ note.matiere.coefficient }}</td>
+        <td>{{ note.dateAjout|date("d/m/Y H:i:s") }}</td>
+      </tr>
+  {% endfor %}
+  {% endif %}
+    </tbody>
+  </table>
+
+  <span>Moyenne : </span>{{ avg }}
+</div>
+
+<div>
+  <h2>Ajouter une note</h2>
+  {{ form(formNote) }}
+</div>
+
+</div>
+
+{% endblock %}
