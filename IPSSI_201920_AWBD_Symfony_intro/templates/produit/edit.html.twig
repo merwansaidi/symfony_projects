@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h1>{{produit.name}}</h1>
+	<p>{{produit.description}}</p>
+	<p>{{produit.price}}€</p>
+	<p>{{produit.qty}} pcs</p>
+
+	<h2>Modifier le produit</h2>
+	{{form(form)}}
+
+{% endblock %}
