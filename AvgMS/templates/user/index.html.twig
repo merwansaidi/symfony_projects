@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Landing Page Note{% endblock %}
+
+
+{% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
 <style>
@@ -9,31 +11,20 @@
 </style>
 
 <div class="example-wrapper">
-    <h1> Notes ✅</h1>
+    <h1>Utilisateurs</h1>
 
-<div>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Matière</th>
-        <th scope="col">Note</th>
-        <th scope="col">Coeff</th>
-        <th scope="col">Ajouté le</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Moyenne</th>
       </tr>
     </thead>
     <tbody>
-  {% if notes is not empty %}
-  {% for note in notes %}    
-      <tr>
-        <th scope="row">{{ note.matiere.nom }}</th>
-        <td>{{ note.valeur }}</td>
-        <td>{{ note.matiere.coefficient }}</td>
-        <td>{{ note.dateAjout|date("d/m/Y H:i:s") }}</td>
-      </tr>
-  {% endfor %}
-  {% endif %}
-    </tbody>
-  </table>
+  {% if users is not empty %}
+  {% for user in users %} 
 
           {% set total_notes = 0 %}
           {% set total_coeffs = 0 %}
@@ -42,18 +33,27 @@
               {% set total_coeffs = total_coeffs + note.matiere.coefficient %}
           {% endfor %}
           {% set avrg = (total_notes / total_coeffs) %}
-          <p>Moyenne : {{ avrg }}</p>
-
-          {# {% else %} 
-          <p>Il n'y a aucune note</p> #}
-          {# {% endif %}  #}
-</div>
+             
+      <tr>
+        <th scope="row">{{ user.nom }}</th>
+        <td>{{ user.prenom }}</td>
+        <td>{{ user.image }}</td>
+        <td>{{ avrg }}</td>
+      </tr>
+  {% endfor %}
+  {% endif %}
+    </tbody>
+  </table>
 
 <div>
-  <h2>Ajouter une note</h2>
-  {{ form(formNote) }}
+  <h2>Ajouter un utilisateur</h2>
+  {{ form(formUser) }}
 </div>
 
+  {# <span>Moyenne : </span>{{ dump(avg) }} #}
 </div>
 
+
+
+</div>
 {% endblock %}

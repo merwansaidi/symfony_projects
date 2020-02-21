@@ -32,6 +32,11 @@ class Note
      */
     private $dateAjout;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="notes")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,5 +81,17 @@ class Note
 
     public function __construct(){
         $this->dateAjout=new \Datetime();
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

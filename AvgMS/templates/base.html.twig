@@ -15,14 +15,14 @@
                     {{message}}
                 </div>
             {% endfor %}
-        {% endfor %}
-
+            {% endfor %}
 
         {# NAVBAR #}
         {% block navbar %}
             <nav class="navbar navbar-expand bg-dark">
                 <a class="nav-link" href="{{ path('landing') }}">Accueil</a>
                 <a class="nav-link" href="{{ path('matieres') }}">Matiere</a>
+                <a class="nav-link" href="{{ path('user') }}">Utilisateurs</a>
             </nav>
         {% endblock %}
 
