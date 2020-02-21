@@ -18,9 +18,19 @@ class LandingController extends AbstractController
      */
     public function index(Request $request)
     {
-    
+        $rsm = new ResultSetMapping();
+        // build rsm here
+        
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createNativeQuery('select sum(moyenne)/sum(coefficient) as avg from (select t.id, sum(t.valeur*m.coefficient) as moyenne, m.coefficient from note t inner join matiere m on t.matiere_id = m.id group by t.id) w', $rsm);
+        // $query->setParameter(1, 'moyenne');
+        
+        $avg = $query->getResult();
+
+        var_dump($avg);
+
             // Service Doctrine (permet d'interagir avec la BDD)
-            $em = $this->getDoctrine()->getManager();
+           
             $note = new Note();
             $form = $this->createForm(NoteFormType::class, $note);
             $form->handleRequest($request);
@@ -33,17 +43,12 @@ class LandingController extends AbstractController
             $notes = $em->getRepository(Note::class)->findAll();
             return $this->render('landing/index.html.twig', [
                 'notes' => $notes,
-                'formNote' => $form->createView()
+                'formNote' => $form->createView(),
+                'avg'=> $avg
             ]);
 
                 
-$rsm = new ResultSetMapping();
-// build rsm here
-
-$query = $entityManager->createNativeQuery('SELECT id, sum(valeur*coeff)/sum(coeff) as moyenne FROM note group by id', $rsm);
-$query->setParameter(1, 'moyenne');
-
-$avg = $query->getResult();
+            
 
             
 
